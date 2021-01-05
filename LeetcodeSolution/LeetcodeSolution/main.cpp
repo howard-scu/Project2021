@@ -27,7 +27,7 @@ vector<int> stringToIntegerVector(string input)
 	ss.str(input);
 	string item;
 	char delim = ',';
-	while (getline(ss, item, delim)) 
+	while (getline(ss, item, delim))
 	{
 		output.push_back(stoi(item));
 	}
@@ -39,20 +39,57 @@ int stringToInteger(string input)
 	return stoi(input);
 }
 
+
+string integerVectorToString(vector<int> list, int length = -1)
+{
+	if (length == -1)
+	{
+		length = list.size();
+	}
+
+	if (length == 0)
+	{
+		return "[]";
+	}
+
+	string result;
+	for (int index = 0; index < length; index++)
+	{
+		int number = list[index];
+		result += to_string(number) + ", ";
+	}
+	return "[" + result.substr(0, result.length() - 2) + "]";
+}
+//int main()
+//{
+//	string line;
+//	while (getline(cin, line)) 
+//	{
+//		vector<int> customers = stringToIntegerVector(line);
+//		getline(cin, line);
+//		vector<int> grumpy = stringToIntegerVector(line);
+//		getline(cin, line);
+//		int X = stringToInteger(line);
+//
+//		int ret = Solution1052().maxSatisfied(customers, grumpy, X);
+//
+//		string out = to_string(ret);
+//		cout << out << endl;
+//	}
+//	return 0;
+//}
+
+
 int main()
 {
 	string line;
-	while (getline(cin, line)) 
+	while (getline(cin, line))
 	{
-		vector<int> customers = stringToIntegerVector(line);
-		getline(cin, line);
-		vector<int> grumpy = stringToIntegerVector(line);
-		getline(cin, line);
-		int X = stringToInteger(line);
+		vector<int> stones = stringToIntegerVector(line);
 
-		int ret = Solution1052().maxSatisfied(customers, grumpy, X);
+		vector<int> ret = Solution1040().numMovesStonesII(stones);
 
-		string out = to_string(ret);
+		string out = integerVectorToString(ret);
 		cout << out << endl;
 	}
 	return 0;
