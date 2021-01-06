@@ -1,5 +1,6 @@
 #include "SlidingWindow.h"
 #include <sstream>
+#include <assert.h>
 
 void trimLeftTrailingSpaces(string &input)
 {
@@ -60,36 +61,48 @@ string integerVectorToString(vector<int> list, int length = -1)
 	}
 	return "[" + result.substr(0, result.length() - 2) + "]";
 }
-//int main()
-//{
-//	string line;
-//	while (getline(cin, line)) 
-//	{
-//		vector<int> customers = stringToIntegerVector(line);
-//		getline(cin, line);
-//		vector<int> grumpy = stringToIntegerVector(line);
-//		getline(cin, line);
-//		int X = stringToInteger(line);
-//
-//		int ret = Solution1052().maxSatisfied(customers, grumpy, X);
-//
-//		string out = to_string(ret);
-//		cout << out << endl;
-//	}
-//	return 0;
-//}
 
 
-int main()
+string stringToString(string input)
 {
+	assert(input.length() >= 2);
+	string result;
+	for (int i = 0; i < input.length(); i++) {
+		char currentChar = input[i];
+		if (input[i] == '\\') {
+			char nextChar = input[i + 1];
+			switch (nextChar) {
+			case '\"': result.push_back('\"'); break;
+			case '/': result.push_back('/'); break;
+			case '\\': result.push_back('\\'); break;
+			case 'b': result.push_back('\b'); break;
+			case 'f': result.push_back('\f'); break;
+			case 'r': result.push_back('\r'); break;
+			case 'n': result.push_back('\n'); break;
+			case 't': result.push_back('\t'); break;
+			default: break;
+			}
+			i++;
+		}
+		else {
+			result.push_back(currentChar);
+		}
+	}
+	return result;
+}
+
+
+
+int main() {
 	string line;
-	while (getline(cin, line))
-	{
-		vector<int> stones = stringToIntegerVector(line);
+	while (getline(cin, line)) {
+		string s = stringToString(line);
+		getline(cin, line);
+		int k = stringToInteger(line);
 
-		vector<int> ret = Solution1040().numMovesStonesII(stones);
+		int ret = Solution1456().maxVowels(s, k);
 
-		string out = integerVectorToString(ret);
+		string out = to_string(ret);
 		cout << out << endl;
 	}
 	return 0;

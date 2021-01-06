@@ -26,7 +26,6 @@ public:
 	}
 };
 
-
 class Solution1052
 {
 public:
@@ -57,7 +56,6 @@ public:
 		return total + maxSum;
 	}
 };
-
 
 class Solution1040
 {
@@ -116,3 +114,61 @@ public:
 	}
 };
 
+class Solution424
+{
+public:
+	int characterReplacement(string s, int k)
+	{
+		int maxch = 0;
+		int cmap[26]{ 0 };
+		int left = 0;
+
+		for (int right = 0; right < s.length(); right++)
+		{
+			cmap[s[right] - 'A']++;
+			maxch = std::max(maxch, cmap[s[right] - 'A']);
+
+			if (right - left + 1 > maxch + k)
+			{
+				cmap[s[left] - 'A']--;
+				left++;
+			}
+		}
+		return s.length() - left;
+	}
+};
+
+#include <unordered_map>
+
+class Solution1456 
+{
+public:
+	int maxVowels(string s, int k)
+	{
+		int result = 0;
+
+		for (int left = 0, right = 0, cnt = 0; right < s.length(); right++)
+		{
+			if (s[right] == 'a' ||
+				s[right] == 'e' ||
+				s[right] == 'i' ||
+				s[right] == 'o' ||
+				s[right] == 'u')
+				cnt++;
+			
+			if (right - left + 1 > k)
+			{
+				if (s[left] == 'a' ||
+					s[left] == 'e' ||
+					s[left] == 'i' ||
+					s[left] == 'o' ||
+					s[left] == 'u')
+					cnt--;
+				left++;
+			}
+
+			result = std::max(result, cnt);
+		}
+		return result;
+	}
+};
