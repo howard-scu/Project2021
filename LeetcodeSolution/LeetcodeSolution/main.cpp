@@ -92,15 +92,14 @@ string stringToString(string input)
 }
 
 
-
-int main() {
+int main() 
+{
 	string line;
-	while (getline(cin, line)) {
-		string s = stringToString(line);
-		getline(cin, line);
-		int k = stringToInteger(line);
+	while (getline(cin, line)) 
+	{
+		vector<int> arr = stringToIntegerVector(line);
 
-		int ret = Solution1456().maxVowels(s, k);
+		int ret = Solution978().maxTurbulenceSize(arr);
 
 		string out = to_string(ret);
 		cout << out << endl;

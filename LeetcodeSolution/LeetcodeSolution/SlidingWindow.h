@@ -140,7 +140,7 @@ public:
 
 #include <unordered_map>
 
-class Solution1456 
+class Solution1456
 {
 public:
 	int maxVowels(string s, int k)
@@ -155,7 +155,7 @@ public:
 				s[right] == 'o' ||
 				s[right] == 'u')
 				cnt++;
-			
+
 			if (right - left + 1 > k)
 			{
 				if (s[left] == 'a' ||
@@ -170,5 +170,43 @@ public:
 			result = std::max(result, cnt);
 		}
 		return result;
+	}
+};
+
+
+class Solution1423
+{
+public:
+	int maxScore(vector<int>& cardPoints, int k)
+	{
+		// 前n-k个值和
+		int kSum = 0;
+		int n = cardPoints.size();
+		for (int i = 0; i < k && i < n; i++)
+		{
+			kSum += cardPoints[i];
+		}
+
+		int maxSum = kSum;
+		for (int i = 1; i <= k && i < n; i++)
+		{
+			// k=4 => 0,1,2,3,
+			// ...
+			// k=4 => n-4,n-3,n-2,n-1,
+			kSum = kSum - cardPoints[k - i] + cardPoints[n - i];
+			maxSum = std::max(maxSum, kSum);
+		}
+
+		return maxSum;
+	}
+};
+
+
+class Solution978
+{
+public:
+	int maxTurbulenceSize(vector<int>& arr)
+	{
+		
 	}
 };
