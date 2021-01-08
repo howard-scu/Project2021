@@ -207,6 +207,81 @@ class Solution978
 public:
 	int maxTurbulenceSize(vector<int>& arr)
 	{
-		
+		if (arr.size() <= 1) return arr.size();
+		int result = 1;
+
+		for (int l = 0, r = 1, flag = 0; r < arr.size(); r++)
+		{
+			if (flag == 0)
+			{
+				if (arr[r] - arr[r - 1] > 0) flag = 1;
+				else if (arr[r] - arr[r - 1] < 0) flag = -1;
+				else
+				{
+					flag = 0;
+					l = r;
+					r = std::min(l + 1, (int)arr.size() - 1);
+				}
+			}
+			else if (flag == 1)
+			{
+				if (arr[r] - arr[r - 1] < 0) flag = -1;
+				else if (arr[r] - arr[r - 1] > 0)
+				{
+					flag = 1;
+					l = r - 1;
+				}
+				else
+				{
+					flag = 0;
+					l = r;
+					r = std::min(l + 1, (int)arr.size() - 1);
+				}
+			}
+			else if (flag == -1)
+			{
+				if (arr[r] - arr[r - 1] > 0) flag = 1;
+				else if (arr[r] - arr[r - 1] < 0)
+				{
+					flag = -1;
+					l = r - 1;
+				}
+				else
+				{
+					flag = 0;
+					l = r;
+					r = std::min(l + 1, (int)arr.size() - 1);
+				}
+			}
+			cout << "R:" << r << ", L:" << l << "\t" << flag << endl;
+			result = std::max(r - l + 1, result);
+		}
+		return result;
 	}
 };
+
+
+
+class Solution1208
+{
+public:
+	int equalSubstring(string s, string t, int maxCost)
+	{
+		int result = 0;
+		int current = 0;
+		for (int l = 0, r = 0; r < s.length(); r++)
+		{
+			current += abs(s[r] - t[r]);
+
+			if (current > maxCost)
+			{
+				current -= abs(s[l] - t[l]);
+				l++;
+			}
+
+			result = std::max(r - l + 1, result);
+		}
+		return result;
+	}
+};
+

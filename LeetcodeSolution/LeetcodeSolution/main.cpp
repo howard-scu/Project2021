@@ -92,11 +92,9 @@ string stringToString(string input)
 }
 
 
-int main() 
-{
+int main() {
 	string line;
-	while (getline(cin, line)) 
-	{
+	while (getline(cin, line)) {
 		vector<int> arr = stringToIntegerVector(line);
 
 		int ret = Solution978().maxTurbulenceSize(arr);
