@@ -285,3 +285,57 @@ public:
 	}
 };
 
+#include <map>
+
+class Solution1438
+{
+public:
+	int longestSubarray(vector<int>& nums, int limit)
+	{
+		int result = 0;
+		std::map<int, int> vmap;
+		for (int l = 0, r = 0; r < nums.size(); r++)
+		{
+			vmap[nums[r]]++;
+			if (vmap.rbegin()->first - vmap.begin()->first > limit)
+			{
+				auto it = vmap.find(nums[l++]);
+				it->second--;
+				if (it->second == 0)
+					vmap.erase(it);
+			}
+			result = std::max(r - l + 1, result);
+		}
+		return result;
+	}
+};
+
+
+#include <queue>
+
+class Solution1498
+{
+public:
+	int numSubseq(vector<int>& nums, int target)
+	{
+		int result = 0;
+		std::map<int, int> vmap;
+
+		for (int l = 0, r = 0; r < nums.size(); r++)
+		{
+			vmap[nums[r]]++;
+
+			if (vmap.begin()->first + vmap.rbegin()->first > target)
+			{
+				auto it = vmap.find(vmap[l++]);
+				if (--(it->second) == 0)
+				{
+					vmap.erase(it);
+				}
+			}
+			result = std::max(r - l + 1, result);
+		}
+		return result % (1000000000 + 7);
+	}
+};
+

@@ -92,12 +92,15 @@ string stringToString(string input)
 }
 
 
+
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		vector<int> arr = stringToIntegerVector(line);
+		vector<int> nums = stringToIntegerVector(line);
+		getline(cin, line);
+		int target = stringToInteger(line);
 
-		int ret = Solution978().maxTurbulenceSize(arr);
+		int ret = Solution1498().numSubseq(nums, target);
 
 		string out = to_string(ret);
 		cout << out << endl;
