@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="SlidingWindow.h" />
+    <ClInclude Include="TwoPointers.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

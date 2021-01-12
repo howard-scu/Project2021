@@ -1,4 +1,5 @@
 #include "SlidingWindow.h"
+#include "TwoPointers.h"
 #include <sstream>
 #include <assert.h>
 
@@ -92,17 +93,14 @@ string stringToString(string input)
 }
 
 
-
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		vector<int> nums = stringToIntegerVector(line);
-		getline(cin, line);
-		int target = stringToInteger(line);
+		string S = stringToString(line);
 
-		int ret = Solution1498().numSubseq(nums, target);
+		vector<int> ret = Solution763().partitionLabels(S);
 
-		string out = to_string(ret);
+		string out = integerVectorToString(ret);
 		cout << out << endl;
 	}
 	return 0;

@@ -2,7 +2,9 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>  
-
+#include <unordered_map>
+#include <map>
+#include <queue>
 using namespace std;
 
 class Solution1004
@@ -138,7 +140,6 @@ public:
 	}
 };
 
-#include <unordered_map>
 
 class Solution1456
 {
@@ -285,7 +286,7 @@ public:
 	}
 };
 
-#include <map>
+
 
 class Solution1438
 {
@@ -311,7 +312,6 @@ public:
 };
 
 
-#include <queue>
 
 class Solution1498
 {
