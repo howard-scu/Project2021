@@ -92,17 +92,21 @@ string stringToString(string input)
 	return result;
 }
 
+string boolToString(bool input)
+{
+	return input ? "True" : "False";
+}
 
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		vector<int> numbers = stringToIntegerVector(line);
+		string S = stringToString(line);
 		getline(cin, line);
-		int target = stringToInteger(line);
+		string T = stringToString(line);
 
-		vector<int> ret = Solution167().twoSum(numbers, target);
+		bool ret = Solution844().backspaceCompare(S, T);
 
-		string out = integerVectorToString(ret);
+		string out = boolToString(ret);
 		cout << out << endl;
 	}
 	return 0;
