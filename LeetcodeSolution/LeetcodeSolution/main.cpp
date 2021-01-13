@@ -96,9 +96,11 @@ string stringToString(string input)
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		string S = stringToString(line);
+		vector<int> numbers = stringToIntegerVector(line);
+		getline(cin, line);
+		int target = stringToInteger(line);
 
-		vector<int> ret = Solution763().partitionLabels(S);
+		vector<int> ret = Solution167().twoSum(numbers, target);
 
 		string out = integerVectorToString(ret);
 		cout << out << endl;

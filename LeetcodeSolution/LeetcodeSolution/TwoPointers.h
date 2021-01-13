@@ -31,3 +31,62 @@ public:
 		return partition;
 	}
 };
+
+class Solution167 {
+public:
+	vector<int> twoSum(vector<int>& numbers, int target)
+	{
+		vector<int> result;
+		int l = 0;
+		int r = numbers.size() - 1;
+
+		while (l < r)
+		{
+			auto sum = numbers[l] + numbers[r];
+			if (sum > target) r--;
+			else if (sum < target) l++;
+			else return vector<int>{l + 1, r + 1};
+		}
+	}
+};
+
+
+class Solution350 {
+public:
+	vector<int> intersect(vector<int>& nums1, vector<int>& nums2)
+	{
+		// ≈≈–Ú
+		std::sort(nums1.begin(), nums1.end());
+		std::sort(nums2.begin(), nums2.end());
+		
+		// ΩªºØ
+		std::vector<int> intersection;
+		std::set_intersection(
+			nums1.begin(), nums1.end(),
+			nums2.begin(), nums2.end(),
+			std::back_inserter(intersection));
+		return intersection;
+	}
+};
+
+
+class Solution26 {
+public:
+	int removeDuplicates(vector<int>& nums)
+	{
+		if (nums.size() <= 1) return nums.size();
+
+		int fast = 0;
+		int slow = 1;
+
+		for (; fast < nums.size(); fast++)
+		{
+			if (nums[fast] != nums[slow])
+			{
+				slow++;
+				nums[slow] = nums[fast];
+			}
+		}
+		return slow + 1;
+	}
+};
