@@ -133,7 +133,7 @@ public:
 				if (S[i] != T[j])
 					return false;
 			}
-			else if(i >= 0 || j >= 0)
+			else if (i >= 0 || j >= 0)
 				return false;
 
 			i--, j--;
@@ -171,3 +171,60 @@ public:
 	}
 };
 
+class Solution88 {
+public:
+	void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
+	{
+		int id = m + n - 1;
+		for (int i = m - 1, j = n - 1; id >= 0 && j >= 0; )
+		{
+			if (i < 0)
+			{
+				nums1[id--] = nums2[j--];
+			}
+			else
+			{
+				if (nums2[j] >= nums1[i])
+				{
+					nums1[id] = nums2[j];
+					j--, id--;
+				}
+				else
+				{
+					nums1[id] = nums1[i];
+					i--, id--;
+				}
+			}
+
+		}
+	}
+};
+
+
+class Solution125
+{
+public:
+	bool isPalindrome(string s)
+	{
+		int l = 0;
+		int r = s.length() - 1;
+
+		while (l < r)
+		{
+			while (l < s.length() && !isalnum(s[l]))l++;
+			while (r >= 0 && !isalnum(s[r]))r--;
+
+			if (l < r)
+			{
+				//if (s[l] != s[r] && !(isalpha(s[l]) && isalpha(s[r]) && tolower(s[l]) == tolower(s[r])))
+				if (tolower(s[l]) != tolower(s[r]))
+					return false;
+				else
+				{
+					l++, r--;
+				}
+			}
+		}
+		return true;
+	}
+};

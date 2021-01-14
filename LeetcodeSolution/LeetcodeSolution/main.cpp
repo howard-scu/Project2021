@@ -97,14 +97,13 @@ string boolToString(bool input)
 	return input ? "True" : "False";
 }
 
+
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		string S = stringToString(line);
-		getline(cin, line);
-		string T = stringToString(line);
+		string s = stringToString(line);
 
-		bool ret = Solution844().backspaceCompare(S, T);
+		bool ret = Solution125().isPalindrome(s);
 
 		string out = boolToString(ret);
 		cout << out << endl;
