@@ -1,11 +1,5 @@
 #pragma once
-#include <vector>
-#include <iostream>
-#include <algorithm>  
-#include <unordered_map>
-#include <map>
-#include <queue>
-using namespace std;
+#include"header.h"
 
 class Solution1004
 {
@@ -140,7 +134,6 @@ public:
 	}
 };
 
-
 class Solution1456
 {
 public:
@@ -174,7 +167,6 @@ public:
 	}
 };
 
-
 class Solution1423
 {
 public:
@@ -201,7 +193,6 @@ public:
 		return maxSum;
 	}
 };
-
 
 class Solution978
 {
@@ -261,8 +252,6 @@ public:
 	}
 };
 
-
-
 class Solution1208
 {
 public:
@@ -286,8 +275,6 @@ public:
 	}
 };
 
-
-
 class Solution1438
 {
 public:
@@ -310,8 +297,6 @@ public:
 		return result;
 	}
 };
-
-
 
 class Solution1498
 {
@@ -338,4 +323,3 @@ public:
 		return result % (1000000000 + 7);
 	}
 };
-

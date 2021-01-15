@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="header.h" />
     <ClInclude Include="SlidingWindow.h" />
     <ClInclude Include="TwoPointers.h" />
   </ItemGroup>

@@ -1,11 +1,6 @@
 #pragma once
-#include <vector>
-#include <iostream>
-#include <algorithm>  
-#include <unordered_map>
-#include <map>
-#include <queue>
-using namespace std;
+#include"header.h"
+
 
 
 class Solution763
@@ -228,3 +223,57 @@ public:
 		return true;
 	}
 };
+
+
+class Solution234
+{
+public:
+	ListNode* reverseNodes(ListNode* head)
+	{
+		if (head == nullptr) return nullptr;
+		ListNode* p = head;
+		head = new ListNode(0);
+		while (p != nullptr)
+		{
+			auto q = head->next;
+			auto t = p->next;
+
+			head->next = p;
+			p->next = q;
+			p = t;
+		}
+		auto tmp = head;
+		head = head->next;
+		delete tmp;
+		return head;
+	}
+
+	bool isPalindrome(ListNode* head)
+	{
+		if (head == nullptr) return true;
+
+		ListNode* fast = head;
+		ListNode* slow = head;
+
+		while (fast && fast->next)
+		{
+			fast = fast->next->next;
+			slow = slow->next;
+		}
+
+		ListNode* p;
+		if (fast) p = slow->next;
+		else p = slow;
+		p = reverseNodes(p);
+
+		for (auto q = head;
+			p != nullptr&& q != nullptr;
+			p = p->next, q = q->next)
+			if (p->val != q->val)
+			{
+				return false;
+			}
+		return true;
+	}
+};
+
