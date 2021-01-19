@@ -277,3 +277,46 @@ public:
 	}
 };
 
+class Solution925 {
+public:
+	bool isLongPressedName(string name, string typed)
+	{
+		int i = 0, j = 0;
+		while (i < name.length() && j < typed.length())
+		{
+			if (name[i] == typed[j])
+			{
+				i++, j++;
+			}
+			else if (name[i] != typed[j] && i - 1 >= 0 && typed[j] == name[i - 1])
+			{
+				j++;
+			}
+			else
+				return false;
+		}
+		if (i < name.length()) return false;
+		for (;j < typed.length(); j++)
+			if (typed[j] != name[name.length() - 1]) return false;
+		return true;
+	}
+};
+
+
+
+class Solution11 {
+public:
+	int maxArea(vector<int>& height)
+	{
+		int maxArea = 0;
+		for (int i = 0, j = height.size() - 1; i < j;)
+		{
+			auto r = std::min(height[i], height[j]);
+			auto area = r * r*(j - i);
+			if (maxArea < area) maxArea = area;
+			if (height[i] * height[j - 1] > height[i + 1] * height[j]) j--;
+			else i++;
+		}
+		return maxArea;
+	}
+};

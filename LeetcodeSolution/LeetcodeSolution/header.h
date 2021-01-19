@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <unordered_map>
 #include <map>
+#include <stack>
 #include <queue>
 #include <sstream>
 #include <assert.h>

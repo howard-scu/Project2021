@@ -1,17 +1,30 @@
 #include "SlidingWindow.h"
 #include "TwoPointers.h"
+#include "Stack.h"
 
+
+//int main() {
+//	string line;
+//	while (getline(cin, line)) {
+//		string S = stringToString(line);
+//
+//		string ret = Solution1021().removeOuterParentheses(S);
+//
+//		string out = (ret);
+//		cout << out << endl;
+//	}
+//	return 0;
+//}
 
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		ListNode* head = stringToListNode(line);
+		string S = stringToString(line);
 
-		bool ret = Solution234().isPalindrome(head);
+		string ret = Solution1047().removeDuplicates(S);
 
-		string out = boolToString(ret);
+		string out = (ret);
 		cout << out << endl;
 	}
 	return 0;
 }
-
