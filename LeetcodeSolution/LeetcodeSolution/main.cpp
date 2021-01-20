@@ -16,15 +16,9 @@
 //	return 0;
 //}
 
-int main() {
-	string line;
-	while (getline(cin, line)) {
-		string S = stringToString(line);
-
-		string ret = Solution1047().removeDuplicates(S);
-
-		string out = (ret);
-		cout << out << endl;
-	}
+int main()
+{
+	int result = Solution682().calPoints(vector<string>{"5", "2", "C", "D", "+"});
+	cout << result << endl;
 	return 0;
 }
