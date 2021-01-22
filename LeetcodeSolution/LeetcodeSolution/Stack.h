@@ -122,3 +122,64 @@ public:
 		return sum;
 	}
 };
+
+
+class Solution1598 {
+public:
+	int minOperations(vector<string>& logs)
+	{
+		stack<string> st;
+		int result = 0;
+		for (int i = 0; i < logs.size(); i++)
+		{
+			if (logs[i] == "../")
+			{
+				if (st.size() > 0)
+					st.pop();
+			}
+			else if (logs[i] == "./")
+			{
+				;
+			}
+			else
+			{
+				st.push(logs[i]);
+			}
+		}
+		return st.size();
+	}
+};
+
+//class Solution496
+//{
+//public:
+//	vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) 
+//	{
+//		unordered_map<int,int>  umap;
+//		stack<int>				st;
+//
+//		for (int i = 0; i < nums2.size(); i++)
+//		{
+//			if (st.empty()) st.push(nums2[i]);
+//			else if (nums2[i] > st.top())
+//			{
+//				st.push(nums2[i]);
+//			}
+//			else
+//			{
+//				while (!st.empty())
+//				{
+//					umap[st.top()] = nums2[i];
+//					st.pop();
+//				}
+//			}
+//		}
+//		vector<int> results;
+//		for (int i = 0; i < nums1.size(); i++)
+//			if (umap.find(nums1[i]) != umap.end())
+//				results.push_back(umap[nums1[i]]);
+//			else 
+//				results.push_back(-1);
+//		return results;
+//	}
+//};
