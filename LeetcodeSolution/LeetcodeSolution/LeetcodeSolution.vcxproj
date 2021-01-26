@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="SlidingWindow.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="TwoPointers.h" />

@@ -1,6 +1,7 @@
 #include "SlidingWindow.h"
 #include "TwoPointers.h"
 #include "Stack.h"
+#include "Heap.h"
 
 
 //int main() {
@@ -16,9 +17,15 @@
 //	return 0;
 //}
 
-int main()
-{
-	int result = Solution682().calPoints(vector<string>{"5", "2", "C", "D", "+"});
-	cout << result << endl;
+int main() {
+	string line;
+	while (getline(cin, line)) {
+		vector<int> stones = stringToIntegerVector(line);
+
+		int ret = Solution1046().lastStoneWeight(stones);
+
+		string out = to_string(ret);
+		cout << out << endl;
+	}
 	return 0;
 }
