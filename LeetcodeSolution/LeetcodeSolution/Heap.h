@@ -25,31 +25,91 @@ class KthLargest {
 public:
 	KthLargest(int k, vector<int>& nums)
 	{
-		mk = k;
+		K = k;
 		for (int i = 0; i < nums.size(); i++)
-			pq.push(nums[i]);
+		{
+			st.insert(nums[i]);
+			if (st.size() > k) st.erase(st.begin());
+		}
 	}
 
-	int add(int val) 
+	int add(int val)
 	{
-		pq.push(val);
-		for (int i = 0; i < mk; i++)
-		{
-			auto v = pq.top();
-			sta.push(v);
-			pq.pop();
-		}
-		auto result = sta.top();
-		while (!sta.empty())
-		{
-			auto v = sta.top();
-			sta.pop();
-			pq.push(v);
-		}
-		return result;
+		st.insert(val);
+		if (st.size() > K) st.erase(st.begin());
+		return *st.begin();
 	}
 private:
-	priority_queue<int> pq;
-	stack<int>			sta;
-	int mk;
+	int K;
+	multiset<int> st;
+};
+
+
+class Solution451 {
+public:
+
+	//std::priority_queue< freq_pair, std::vector<freq_pair>, auto(*)(const freq_pair&, const freq_pair&)->bool > pq
+	//{
+	//	[](const freq_pair& x, const freq_pair& y)->bool
+	//	{
+	//		return x.second < y.second;
+	//	}
+	//};
+	string frequencySort(string s)
+	{
+		unordered_map<char, int> mp;
+		for (const auto& ch : s)
+		{
+			mp[ch]++;
+		}
+
+		auto cmp = [&](const auto& a, const auto& b)
+		{
+			return mp[a] > mp[b] || (mp[a] == mp[b] && a < b);
+		};
+
+		sort(s.begin(), s.end(), cmp);
+		return s;
+	}
+};
+
+
+class Solution215
+{
+public:
+	int findKthLargest(vector<int>& nums, int k)
+	{
+		std::priority_queue<int, vector<int>, greater<int>> pq;
+		for (auto v : nums)
+		{
+			if (pq.size() < k) pq.push(v);
+			else {
+				pq.push(v);
+				pq.pop();
+			}
+		}
+		return pq.top();
+	}
+};
+
+
+class Solution264 {
+public:
+	int nthUglyNumber(int n)
+	{
+		set<int> iset;
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				for (int k = 0; k < n; k++)
+				{
+					auto val = pow(5, i)*pow(3, j)*pow(2, k);
+					if (iset.size() == 0 || val < *(iset.rbegin()))
+						iset.insert(val);
+				}
+			}
+		}
+		return *(iset.rbegin());
+	}
 };
