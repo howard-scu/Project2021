@@ -2,6 +2,7 @@
 #include "TwoPointers.h"
 #include "Stack.h"
 #include "Heap.h"
+#include "Greedy.h"
 
 
 //int main() {

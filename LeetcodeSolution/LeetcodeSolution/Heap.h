@@ -113,3 +113,64 @@ public:
 		return *(iset.rbegin());
 	}
 };
+
+
+class Solution973 {
+public:
+	//vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
+	//	sort(points.begin(), points.end(), [](const vector<int>& u, const vector<int>& v) {
+	//		return u[0] * u[0] + u[1] * u[1] < v[0] * v[0] + v[1] * v[1];
+	//	});
+	//	return { points.begin(), points.begin() + K };
+	//}
+
+	vector<vector<int>> kClosest(vector<vector<int>>& points, int K)
+	{
+		vector<vector<int>>			results;
+		vector<pair<int, double>>	dist_map;
+		for (int i = 0; i < points.size(); i++)
+		{
+			dist_map.push_back(make_pair(i, sqrt(points[i][0] * points[i][0] + points[i][1] * points[i][1])));
+		}
+
+		auto cmp = [](const pair<int, double>& x, const pair<int, double>& y)->bool
+		{
+			return x.second > y.second;
+		};
+
+		sort(dist_map.begin(), dist_map.end(), cmp);
+
+		for (int i = 0; i < K; i++)
+		{
+			results.push_back(points[dist_map[i].first]);
+		}
+		return results;
+	}
+};
+
+
+class Solution692 {
+public:
+	vector<string> topKFrequent(vector<string>& words, int k)
+	{
+		map<string, int> word_count;
+		for (auto w : words)
+			word_count[w]++;
+
+		vector<pair<string, int>> wc_vec(word_count.begin(), word_count.end());
+		sort(wc_vec.begin(), wc_vec.end(), [](const pair<string, int>& x, const pair<string, int>& y)
+		{
+			return (x.second > y.second) || (x.second == y.second && x.first < y.first);
+		});
+
+		vector<string> results;
+		auto it = wc_vec.begin();
+
+		for (int i = 0; i < k; i++)
+		{
+			results.push_back(it->first);
+			++it;
+		}
+		return results;
+	}
+};

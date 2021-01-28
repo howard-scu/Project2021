@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Greedy.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="Heap.h" />
     <ClInclude Include="SlidingWindow.h" />
