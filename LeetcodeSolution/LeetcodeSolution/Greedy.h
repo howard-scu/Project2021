@@ -36,3 +36,42 @@ public:
 		return n_count;
 	}
 };
+
+
+class Solution1716 {
+public:
+	int totalMoney(int n)
+	{
+		int total = 0, week = 0, offset = 0;
+		for (int i = 0; i < n; i++)
+		{
+			week = i / 7;
+			offset = i % 7 + 1;
+			total += week + offset;
+		}
+		return total;
+	}
+};
+
+
+class Solution1710 {
+public:
+	int maximumUnits(vector<vector<int>>& boxTypes, int truckSize)
+	{
+		sort(boxTypes.begin(), boxTypes.end(),
+			[](const vector<int>& x, const vector<int>& y) {return x[1] > y[1]; });
+
+		int answer = 0;
+		for (int i = 0; i < boxTypes.size(); i++)
+		{
+			for (int j = 0; j < boxTypes[i][0]; i++)
+			{
+				answer += boxTypes[i][1];
+				truckSize--;
+				if (truckSize == 0)
+					break;
+			}
+		}
+		return answer;
+	}
+};
