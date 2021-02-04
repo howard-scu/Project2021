@@ -9,6 +9,7 @@
 #include <queue>
 #include <sstream>
 #include <assert.h>
+#include <numeric>
 
 using namespace std;
 

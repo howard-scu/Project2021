@@ -3,6 +3,7 @@
 #include "Stack.h"
 #include "Heap.h"
 #include "Greedy.h"
+#include "Sort.h"
 
 
 //int main() {
@@ -21,11 +22,11 @@
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		vector<int> stones = stringToIntegerVector(line);
+		vector<int> A = stringToIntegerVector(line);
 
-		int ret = Solution1046().lastStoneWeight(stones);
+		vector<int> ret = Solution922().sortArrayByParityII(A);
 
-		string out = to_string(ret);
+		string out = integerVectorToString(ret);
 		cout << out << endl;
 	}
 	return 0;

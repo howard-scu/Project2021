@@ -43,9 +43,9 @@ public:
 
 
 
-class Solution1528{
+class Solution1528 {
 public:
-	string restoreString(string s, vector<int>& indices) 
+	string restoreString(string s, vector<int>& indices)
 	{
 		auto answer = s;
 		for (int i = 0; i < s.length(); i++)
@@ -59,12 +59,12 @@ public:
 
 class Solution1502 {
 public:
-	bool canMakeArithmeticProgression(vector<int>& arr) 
+	bool canMakeArithmeticProgression(vector<int>& arr)
 	{
 		sort(arr.begin(), arr.end());
 
 		if (arr.size() <= 1) return false;
-		
+
 		auto delta = arr[1] - arr[0];
 		for (int i = 1; i < arr.size(); i++)
 		{
@@ -74,3 +74,37 @@ public:
 		return true;
 	}
 };
+
+
+class Solution1636 {
+public:
+	vector<int> frequencySort(vector<int>& nums)
+	{
+		// count
+		unordered_map<int, int> freq;
+		for (auto& x : nums)
+			freq[x]++;
+
+		sort(nums.begin(), nums.end(), [&](const int& x, const int& y)
+		{
+			return (freq[x] < freq[y]) || (freq[x] == freq[y] && x > y);
+		});
+
+		return nums;
+	}
+};
+
+
+//class Solution922 {
+//public:
+//	vector<int> sortArrayByParityII(vector<int>& A)
+//	{
+//		std::partition(A.begin(), A.end(), [&](auto& elem) {
+//			auto idx = &elem - &A[0];
+//			cout << idx << ", " << A[idx] << endl;
+//			return (idx % 2 == 0 && A[idx] % 2 == 0) ||
+//				(idx % 2 == 1 && A[idx] % 2 == 1);
+//		});
+//		return A;
+//	}
+//};
