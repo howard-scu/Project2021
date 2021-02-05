@@ -19,15 +19,9 @@
 //	return 0;
 //}
 
+
 int main() {
-	string line;
-	while (getline(cin, line)) {
-		vector<int> A = stringToIntegerVector(line);
-
-		vector<int> ret = Solution922().sortArrayByParityII(A);
-
-		string out = integerVectorToString(ret);
-		cout << out << endl;
-	}
+	auto ret = Solution1640().canFormArray(vector<int>{91, 4, 64, 78}, 
+		vector<vector<int>>{ {78}, { 4, 64 }, { 91 }});
 	return 0;
 }
