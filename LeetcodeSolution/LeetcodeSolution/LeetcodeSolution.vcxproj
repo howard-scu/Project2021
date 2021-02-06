@@ -129,6 +129,7 @@
     <ClInclude Include="SlidingWindow.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="Tree.h" />
     <ClInclude Include="TwoPointers.h" />
   </ItemGroup>
   <ItemGroup>
