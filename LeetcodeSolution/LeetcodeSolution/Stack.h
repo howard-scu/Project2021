@@ -28,7 +28,6 @@ public:
 	}
 };
 
-
 class Solution1021
 {
 public:
@@ -78,7 +77,6 @@ public:
 	}
 };
 
-
 class Solution682 {
 public:
 	int calPoints(vector<string> ops)
@@ -123,7 +121,6 @@ public:
 	}
 };
 
-
 class Solution1598 {
 public:
 	int minOperations(vector<string>& logs)
@@ -153,7 +150,7 @@ public:
 //class Solution496
 //{
 //public:
-//	vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) 
+//	vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2)
 //	{
 //		unordered_map<int,int>  umap;
 //		stack<int>				st;
@@ -178,7 +175,7 @@ public:
 //		for (int i = 0; i < nums1.size(); i++)
 //			if (umap.find(nums1[i]) != umap.end())
 //				results.push_back(umap[nums1[i]]);
-//			else 
+//			else
 //				results.push_back(-1);
 //		return results;
 //	}

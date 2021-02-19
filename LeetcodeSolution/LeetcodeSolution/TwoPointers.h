@@ -1,8 +1,6 @@
 #pragma once
 #include"header.h"
 
-
-
 class Solution763
 {
 public:
@@ -45,7 +43,6 @@ public:
 	}
 };
 
-
 class Solution350 {
 public:
 	vector<int> intersect(vector<int>& nums1, vector<int>& nums2)
@@ -63,7 +60,6 @@ public:
 		return intersection;
 	}
 };
-
 
 class Solution26 {
 public:
@@ -85,7 +81,6 @@ public:
 		return slow + 1;
 	}
 };
-
 
 class Solution844 {
 public:
@@ -190,11 +185,9 @@ public:
 					i--, id--;
 				}
 			}
-
 		}
 	}
 };
-
 
 class Solution125
 {
@@ -223,7 +216,6 @@ public:
 		return true;
 	}
 };
-
 
 class Solution234
 {
@@ -296,13 +288,11 @@ public:
 				return false;
 		}
 		if (i < name.length()) return false;
-		for (;j < typed.length(); j++)
+		for (; j < typed.length(); j++)
 			if (typed[j] != name[name.length() - 1]) return false;
 		return true;
 	}
 };
-
-
 
 class Solution11 {
 public:

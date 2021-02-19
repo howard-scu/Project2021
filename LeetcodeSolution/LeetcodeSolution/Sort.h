@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 class Solution1370 {
 public:
 	string sortString(string s)
@@ -41,8 +40,6 @@ public:
 	}
 };
 
-
-
 class Solution1528 {
 public:
 	string restoreString(string s, vector<int>& indices)
@@ -55,7 +52,6 @@ public:
 		return answer;
 	}
 };
-
 
 class Solution1502 {
 public:
@@ -75,7 +71,6 @@ public:
 	}
 };
 
-
 class Solution1636 {
 public:
 	vector<int> frequencySort(vector<int>& nums)
@@ -93,7 +88,6 @@ public:
 		return nums;
 	}
 };
-
 
 class Solution1030 {
 public:
@@ -143,7 +137,6 @@ public:
 	}
 };
 
-
 class Solution1640 {
 public:
 	bool canFormArray(vector<int> arr, vector<vector<int>> pieces)
@@ -167,7 +160,6 @@ public:
 	}
 };
 
-
 class Solution1491 {
 public:
 	double average(vector<int>& salary)
@@ -185,7 +177,6 @@ public:
 	}
 };
 
-
 class Solution976 {
 public:
 	int largestPerimeter(vector<int>& A)
@@ -202,7 +193,6 @@ public:
 	}
 };
 
-
 class Solution922 {
 public:
 	vector<int> sortArrayByParityII(vector<int>& A)
@@ -216,5 +206,3 @@ public:
 		return A;
 	}
 };
-
-

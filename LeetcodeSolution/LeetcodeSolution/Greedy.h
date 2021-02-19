@@ -37,7 +37,6 @@ public:
 	}
 };
 
-
 class Solution1716 {
 public:
 	int totalMoney(int n)
@@ -52,7 +51,6 @@ public:
 		return total;
 	}
 };
-
 
 class Solution1710 {
 public:
@@ -75,7 +73,6 @@ public:
 		return answer;
 	}
 };
-
 
 class Solution944 {
 public:
@@ -120,7 +117,6 @@ public:
 	}
 };
 
-
 class Solution1217 {
 public:
 	int minCostToMoveChips(vector<int>& position)
@@ -135,7 +131,6 @@ public:
 		return sum1 < sum2 ? sum1 : sum2;
 	}
 };
-
 
 class Solution1518 {
 public:
@@ -154,7 +149,6 @@ public:
 		return answer;
 	}
 };
-
 
 class Solution122 {
 public:

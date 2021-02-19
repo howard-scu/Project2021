@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 class Solution938 {
 public:
 	void InOrderTraversal(TreeNode* root, int& low, int& high, int& sum)
@@ -19,7 +18,6 @@ public:
 	}
 };
 
-
 class Solution226 {
 public:
 	TreeNode* invertTree(TreeNode* root)
@@ -36,7 +34,6 @@ public:
 	}
 };
 
-
 class Solution104 {
 public:
 	int maxDepth(TreeNode* root)
@@ -49,7 +46,6 @@ public:
 		return max(l, r);
 	}
 };
-
 
 class Solution590 {
 public:
@@ -68,7 +64,6 @@ public:
 	}
 };
 
-
 class Solution700 {
 public:
 	TreeNode* searchBST(TreeNode* root, int val)
@@ -78,5 +73,50 @@ public:
 		if (root->val < val) return searchBST(root->right, val);
 		else if (root->val < val) return searchBST(root->left, val);
 		else return root;
+	}
+};
+
+class Solution108 {
+public:
+	TreeNode* constructBST(vector<int>& nums, int i, int j)
+	{
+		if (i > j) return nullptr;
+		else
+		{
+			int t = (i + j) / 2;
+			auto root = new TreeNode(nums[t]);
+			root->left = constructBST(nums, i, t - 1);
+			root->right = constructBST(nums, t + 1, j);
+			return root;
+		}
+	}
+
+	TreeNode* sortedArrayToBST(vector<int>& nums)
+	{
+		return constructBST(nums, 0, nums.size() - 1);
+	}
+};
+
+class Solution589 {
+public:
+	vector<int> preorder(Node* root)
+	{
+		stack<Node*> sta;
+		if (root != nullptr)
+			sta.push(root);
+
+		vector<int> results;
+		while (!sta.empty())
+		{
+			auto t = sta.top();
+			sta.pop();
+			results.push_back(t->val);
+
+			for (int i = t->children.size() - 1; i >= 0; i--)
+			{
+				sta.push(t->children[i]);
+			}
+		}
+		return results;
 	}
 };

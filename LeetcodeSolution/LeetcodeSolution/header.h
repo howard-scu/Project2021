@@ -18,7 +18,6 @@
 
 using namespace std;
 
-
 void trimLeftTrailingSpaces(string &input)
 {
 	input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch)
@@ -57,7 +56,6 @@ int stringToInteger(string input)
 	return stoi(input);
 }
 
-
 string integerVectorToString(vector<int> list, int length = -1)
 {
 	if (length == -1)
@@ -78,7 +76,6 @@ string integerVectorToString(vector<int> list, int length = -1)
 	}
 	return "[" + result.substr(0, result.length() - 2) + "]";
 }
-
 
 string stringToString(string input)
 {
@@ -120,7 +117,6 @@ struct ListNode
 	ListNode(int x) : val(x), next(NULL) {}
 };
 
-
 ListNode* stringToListNode(string input)
 {
 	// Generate list from the input
@@ -138,7 +134,6 @@ ListNode* stringToListNode(string input)
 	return ptr;
 }
 
-
 struct TreeNode
 {
 	int val;
@@ -148,7 +143,6 @@ struct TreeNode
 	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 	TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-
 
 class Node {
 public:

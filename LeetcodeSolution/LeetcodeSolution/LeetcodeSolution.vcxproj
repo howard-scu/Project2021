@@ -123,12 +123,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BinarySearch.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="Greedy.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="Heap.h" />
+    <ClInclude Include="Recursion.h" />
     <ClInclude Include="SlidingWindow.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="TwoPointers.h" />
   </ItemGroup>

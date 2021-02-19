@@ -20,7 +20,6 @@ public:
 	}
 };
 
-
 class KthLargest {
 public:
 	KthLargest(int k, vector<int>& nums)
@@ -43,7 +42,6 @@ private:
 	int K;
 	multiset<int> st;
 };
-
 
 class Solution451 {
 public:
@@ -73,7 +71,6 @@ public:
 	}
 };
 
-
 class Solution215
 {
 public:
@@ -91,7 +88,6 @@ public:
 		return pq.top();
 	}
 };
-
 
 class Solution264 {
 public:
@@ -113,7 +109,6 @@ public:
 		return *(iset.rbegin());
 	}
 };
-
 
 class Solution973 {
 public:
@@ -147,7 +142,6 @@ public:
 		return results;
 	}
 };
-
 
 class Solution692 {
 public:
