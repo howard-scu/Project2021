@@ -78,3 +78,42 @@ public:
 		return result->next;
 	}
 };
+
+
+class Solution563 {
+public:
+	int traversal(TreeNode* root)
+	{
+		if (root == nullptr) return 0;
+		return traversal(root->left) + traversal(root->right + root->val;
+	}
+	int findTilt(TreeNode* root)
+	{
+		if (root == nullptr) return 0;
+		return abs(traversal(root->left) - traversal(root->right)) + findTilt(root->left) + findTilt(root->right);
+	}
+};
+
+class Solution783 {
+public:
+	int prev;
+	int	ans;
+
+	int minDiffInBST(TreeNode* root)
+	{
+		prev = -1;
+		ans = 1000;
+		dfs(root);
+		return ans;
+	}
+
+	void dfs(TreeNode* node)
+	{
+		if (node == nullptr) return;
+		dfs(node->left);
+		if (prev != -1)
+			ans = min(ans, node->val - prev);
+		prev = node->val;
+		dfs(node->right);
+	}
+};
