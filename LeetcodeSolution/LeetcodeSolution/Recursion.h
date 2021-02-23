@@ -85,7 +85,7 @@ public:
 	int traversal(TreeNode* root)
 	{
 		if (root == nullptr) return 0;
-		return traversal(root->left) + traversal(root->right + root->val;
+		return traversal(root->left) + traversal(root->right) + root->val;
 	}
 	int findTilt(TreeNode* root)
 	{
@@ -115,5 +115,68 @@ public:
 			ans = min(ans, node->val - prev);
 		prev = node->val;
 		dfs(node->right);
+	}
+};
+
+class Solution110 {
+public:
+	int height(TreeNode* root)
+	{
+		if (root == nullptr) return 0;
+		return max(height(root->left), height(root->right)) + 1;
+	}
+
+	bool isBalanced(TreeNode* root)
+	{
+		if (root == nullptr) return true;
+		return (abs(height(root->left) - height(root->right)) <= 1) &&
+			isBalanced(root->left) && isBalanced(root->right);
+	}
+};
+
+
+class Solution1137 {
+public:
+	int tribonacci(int n)
+	{
+		if (n == 0) return 0;
+		else if (n == 1) return 1;
+		else if (n == 2) return 1;
+		else
+			return tribonacci(n - 1) + tribonacci(n - 2) + tribonacci(n - 3);
+	}
+};
+
+
+
+class Solution1379 {
+public:
+	TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target)
+	{
+		if (original == nullptr) return nullptr;
+
+		if (original == target) return cloned;
+		else {
+			auto left = getTargetCopy(original->left, cloned->left, target);
+			auto right = getTargetCopy(original->right, cloned->right, target);
+			return left != nullptr ? left : right;
+		}
+	}
+};
+
+
+class Solution1038 {
+public:
+	int sum = 0;
+	TreeNode* bstToGst(TreeNode* root)
+	{
+		if (root != nullptr) {
+			bstToGst(root->right);
+			sum = sum + root->val;
+			root->val = sum;
+			bstToGst(root->left);
+		}
+		return root;
+
 	}
 };
