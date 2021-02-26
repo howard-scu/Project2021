@@ -120,3 +120,160 @@ public:
 		return results;
 	}
 };
+
+class Solution559 {
+public:
+
+	int maxDepth(Node* root)
+	{
+		if (root == nullptr) return 0;
+
+		int depth = 0;
+		for (auto node : root->children)
+		{
+			depth = max(depth, maxDepth(node));
+		}
+
+		return depth + 1;
+	}
+};
+
+
+class Solution1022 {
+public:
+	int  sum = 0;
+
+	void dfs(TreeNode *root, int num)
+	{
+		if (root == nullptr) return;
+		num = num * 2 + root->val;
+		if (root->left == nullptr && root->right == nullptr) sum += num;
+		dfs(root->left, num);
+		dfs(root->right, num);
+		return;
+	}
+
+	int sumRootToLeaf(TreeNode* root)
+	{
+		dfs(root, 0);
+		return sum;
+	}
+};
+
+
+class Solution637 {
+public:
+	vector<double> averageOfLevels(TreeNode* root)
+	{
+		vector<double> result;
+		std::queue<TreeNode*> que;
+		que.push(root);
+
+		while (!que.empty())
+		{
+			int num = que.size();
+			double sum = 0;
+
+			for (int i = 0; i < num; i++)
+			{
+				auto node = que.front();
+				sum += node->val;
+				que.pop();
+
+				if (node->left) que.push(node->left);
+				if (node->right) que.push(node->right);
+			}
+			result.push_back(sum / num);
+		}
+		return result;
+	}
+};
+
+
+class Solution965 {
+public:
+	bool dfs(TreeNode* root, int val)
+	{
+		if (root == nullptr) return true;
+		else
+		{
+			if (root->val != val) return false;
+			else
+			{
+				return dfs(root->left, val) && dfs(root->right, val);
+			}
+		}
+	}
+
+	bool isUnivalTree(TreeNode* root)
+	{
+		return dfs(root, root->val);
+	}
+};
+
+
+class Solution257 {
+public:
+	vector<string> result;
+
+	void traversal(TreeNode* root, string path)
+	{
+		if (root == nullptr) return;
+		path += ("->" + std::to_string(root->val));
+		if (!root->left && !root->right)
+			result.push_back(path.substr(2, path.length()));
+		traversal(root->left, path);
+		traversal(root->right, path);
+	}
+
+	vector<string> binaryTreePaths(TreeNode* root)
+	{
+		traversal(root, "");
+		return result;
+	}
+};
+
+
+class Solution235 {
+public:
+	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
+	{
+		if (root == nullptr || root == p || root == q)
+			return root;
+
+		TreeNode* left  = lowestCommonAncestor(root->left, p, q);
+		TreeNode* right = lowestCommonAncestor(root->right, p, q);
+		//如果left为空，说明这两个节点在cur结点的右子树上，我们只需要返回右子树查找的结果即可
+		if (left == nullptr)
+			return right;
+		//同上
+		if (right == nullptr)
+			return left;
+		//如果left和right都不为空，说明这两个节点一个在cur的左子树上一个在cur的右子树上，
+		//我们只需要返回cur结点即可。
+		return root;
+	}
+};
+
+
+class Solution872 {
+public:
+	void traversal(TreeNode* root, vector<int>& leaves)
+	{
+		if (root == nullptr) return;
+		if (!root->left && !root->right)leaves.push_back(root->val);
+		traversal(root->left,leaves);
+		traversal(root->right, leaves);
+	}
+
+	bool leafSimilar(TreeNode* root1, TreeNode* root2) 
+	{
+		vector<int> leaves1;
+		vector<int> leaves2;
+
+		traversal(root1, leaves1);
+		traversal(root2, leaves2);
+
+		return leaves1 == leaves2;
+	}
+};
