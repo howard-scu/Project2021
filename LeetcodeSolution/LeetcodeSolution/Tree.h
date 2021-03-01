@@ -241,7 +241,7 @@ public:
 		if (root == nullptr || root == p || root == q)
 			return root;
 
-		TreeNode* left  = lowestCommonAncestor(root->left, p, q);
+		TreeNode* left = lowestCommonAncestor(root->left, p, q);
 		TreeNode* right = lowestCommonAncestor(root->right, p, q);
 		//如果left为空，说明这两个节点在cur结点的右子树上，我们只需要返回右子树查找的结果即可
 		if (left == nullptr)
@@ -262,11 +262,11 @@ public:
 	{
 		if (root == nullptr) return;
 		if (!root->left && !root->right)leaves.push_back(root->val);
-		traversal(root->left,leaves);
+		traversal(root->left, leaves);
 		traversal(root->right, leaves);
 	}
 
-	bool leafSimilar(TreeNode* root1, TreeNode* root2) 
+	bool leafSimilar(TreeNode* root1, TreeNode* root2)
 	{
 		vector<int> leaves1;
 		vector<int> leaves2;
@@ -275,5 +275,122 @@ public:
 		traversal(root2, leaves2);
 
 		return leaves1 == leaves2;
+	}
+};
+
+
+class Solution530
+{
+public:
+	int prev;
+	int	ans;
+
+	int getMinimumDifference(TreeNode* root)
+	{
+		prev = -1;
+		ans = 1000;
+		dfs(root);
+		return ans;
+	}
+
+	void dfs(TreeNode* node)
+	{
+		if (node == nullptr) return;
+		dfs(node->left);
+		if (prev != -1)
+			ans = min(ans, node->val - prev);
+		prev = node->val;
+		dfs(node->right);
+	}
+};
+
+
+class Solution101 {
+public:
+	bool traversal(TreeNode* r1, TreeNode* r2)
+	{
+		if (r1 == nullptr && r2 == nullptr)  return true;
+		else if ((r1 && !r2) || (!r1 && r2)) return false;
+		else
+		{
+			if (r1->val == r2->val)
+			{
+				return traversal(r1->left, r2->right) && traversal(r1->right, r2->left);
+			}
+			else return false;
+		}
+	}
+
+
+	bool isSymmetric(TreeNode* root)
+	{
+		return traversal(root, root);
+	}
+};
+
+
+class Solution100 {
+public:
+	bool isSameTree(TreeNode* p, TreeNode* q)
+	{
+		if (p == nullptr && q == nullptr) return true;
+		else if ((p && !q) || (q && !p)) return false;
+		else {
+			if (p->val == q->val)
+			{
+				return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+			}
+			else return false;
+		}
+	}
+};
+
+
+class Solution404 {
+public:
+	int sum = 0;
+
+	void traversal(TreeNode* root)
+	{
+		if (root == nullptr) return;
+		else if (root->left != nullptr && root->left->left == nullptr && root->left->right == nullptr)
+		{
+			sum += root->left->val;
+			traversal(root->right);
+		}
+		else
+		{
+			if (root->left != nullptr)  traversal(root->left);
+			if (root->right != nullptr) traversal(root->right);
+		}
+	}
+
+	int sumOfLeftLeaves(TreeNode* root)
+	{
+		traversal(root);
+		return sum;
+	}
+};
+
+
+class Solution653 {
+public:
+	bool dfs(TreeNode* r1, TreeNode* r2, int k)
+	{
+		if (r1 != nullptr && r2 != nullptr)
+		{
+			if (r1->val + r2->val == k && r1 != r2) return true;
+			else if (r1->val + r2->val > k)
+				return dfs(r1->left, r2, k) || dfs(r1, r2->left, k);
+			else
+				return dfs(r1->right, r2, k) || dfs(r1, r2->right, k);
+		}
+		else
+			return false;
+	}
+
+	bool findTarget(TreeNode* root, int k)
+	{
+		return dfs(root, root, k);
 	}
 };
