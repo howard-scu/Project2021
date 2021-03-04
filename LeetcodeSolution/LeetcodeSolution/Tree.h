@@ -394,3 +394,61 @@ public:
 		return dfs(root, root, k);
 	}
 };
+
+
+class Solution606 {
+public:
+	//string tree2str(TreeNode* t)
+	//{
+	//	if (t == nullptr) return "";
+	//	else
+	//	{
+	//		auto left = tree2str(t->left);
+	//		auto right = tree2str(t->right);
+	//		if (left.length() != 0 && right.length() != 0)
+	//			return to_string(t->val) + "(" + left + ")" + "(" + right + ")";
+	//		else if (left.length() != 0 && right.length() == 0)
+	//			return to_string(t->val) + "(" + left + ")";
+	//		else if (left.length() == 0 && right.length() != 0)
+	//			return to_string(t->val) + "()" + "(" + right + ")";
+	//		else
+	//			return to_string(t->val);
+	//	}
+	//}
+	string tree2str(TreeNode* t)
+	{
+		if (t == nullptr)
+			return "";
+		if (t->left == nullptr && t->right == nullptr)
+			return to_string(t->val) + "";
+		if (t->right == nullptr)
+			return to_string(t->val) + "(" + tree2str(t->left) + ")";
+		return to_string(t->val) + "(" + tree2str(t->left) + ")(" + tree2str(t->right) + ")";
+	}
+};
+
+
+//class Solution993 {
+//public:
+//	int hx = 0;
+//	int hy = 0;
+//	bool dfs(TreeNode* root, int h, int x, int y)
+//	{
+//		if (root->left != nullptr && root->right != nullptr)
+//		{
+//			if ((root->left->val == x && root->right->val == y) ||
+//				(root->left->val == y && root->right->val == x))
+//				return false;
+//		}
+//		if ((root->left != nullptr && root->left->val == x) || (root->right != nullptr && root->right->val == x)) hx = h + 1;
+//		if ((root->left != nullptr && root->left->val == y) || (root->right != nullptr && root->right->val == y)) hy = h + 1;
+//
+//		return hx == hy && dfs(root->left, h + 1, x, y) && dfs(root->right, h + 1, x, y);
+//	}
+//
+//
+//	bool isCousins(TreeNode* root, int x, int y)
+//	{
+//		return dfs(root, 0, x, y);
+//	}
+//};
