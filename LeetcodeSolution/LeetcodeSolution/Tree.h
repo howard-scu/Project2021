@@ -452,3 +452,74 @@ public:
 //		return dfs(root, 0, x, y);
 //	}
 //};
+
+
+class Solution543 {
+public:
+	int depth(TreeNode* root)
+	{
+		if (root == nullptr) return 0;
+		else
+			return std::max(depth(root->left), depth(root->right)) + 1;
+	}
+
+	int diameterOfBinaryTree(TreeNode* root) 
+	{
+		if (root == nullptr) return 0;
+		else
+		{
+			auto nl = depth(root->left);
+			auto nr = depth(root->right);
+			auto dl = diameterOfBinaryTree(root->left);
+			auto dr = diameterOfBinaryTree(root->right);
+			return std::max(nl + nr, std::max(dl, dr));
+		}
+	}
+};
+
+
+class Solution112 {
+public:
+	bool dfs(TreeNode* root, int target)
+	{
+		if (root == nullptr) return false;
+		else if (root != nullptr && !root->left && !root->right && root->val == target) return false;
+		else
+		{
+			return dfs(root->left, target - root->val) || dfs(root->right, target - root->val);
+		}
+	}
+
+	bool hasPathSum(TreeNode* root, int targetSum) 
+	{
+		return dfs(root, targetSum);
+	}
+};
+
+
+class Solution501 {
+public:
+	unordered_map<int, int> umap;
+
+	void dfs(TreeNode* root)
+	{
+		if (root == nullptr) return;
+		else
+		{
+			umap[root->val]++;
+		}
+	}
+
+	vector<int> findMode(TreeNode* root) 
+	{
+		dfs(root);
+		int max_cnt = 0;
+		for (auto it = umap.begin(); it != umap.end(); ++it)
+			if (max_cnt < it->second) max_cnt = it->second;
+		
+		vector<int> result;
+		for (auto it = umap.begin(); it != umap.end(); ++it)
+			if (it->second == max_cnt) result.push_back(it->first);
+		return result;
+	}
+};
